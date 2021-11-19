@@ -1,6 +1,5 @@
 webrequest.cc {
     reverse_proxy javanile-webrequest.herokuapp.com:80 {
-        header_up X-Forwarded-Proto {scheme}
         header_up X-Forwarded-For {host}
         header_up Host {host}
     }
