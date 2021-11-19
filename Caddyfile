@@ -1,5 +1,12 @@
 
-webrequest.cc {
-    reverse_proxy http://javanile-webrequest.herokuapp.com {
-      }
+localhost:5000 {
+    reverse_proxy https://javanile-webrequest.herokuapp.com {
+        header_up Host javanile-webrequest.herokuapp.com
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Port {server_port}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-Host {host}
+    }
 }
+
