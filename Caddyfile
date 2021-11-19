@@ -1,5 +1,5 @@
 
 webrequest.cc {
-    reverse_proxy javanile-webrequest.herokuapp.com {
+    reverse_proxy http://javanile-webrequest.herokuapp.com {
       }
 }
