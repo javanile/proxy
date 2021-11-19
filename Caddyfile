@@ -9,3 +9,7 @@ webrequest.cc {
         header_up X-Forwarded-Host {host}
     }
 }
+
+www.webrequest.cc {
+    redir https://webrequest.cc{uri}
+}
