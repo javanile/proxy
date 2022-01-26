@@ -18,6 +18,10 @@ release:
 	git commit -m "Release"
 	git push
 
+update: stop
+	git pull
+	make -s start
+
 test:
 	@#bash test/webrequest-test.sh
 	@bash test/binst-test.sh
