@@ -1,5 +1,6 @@
 
 binst.tk {
+    auto_https disable_redirects
     reverse_proxy https://secure.binst.tk {
         header_up Host secure.binst.tk
         header_up X-Real-IP {remote}
