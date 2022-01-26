@@ -10,6 +10,6 @@ webrequest.cc {
     }
 }
 
-www.webrequest.cc {
+webrequest.cc:80, www.webrequest.cc:80, www.webrequest.cc {
     redir https://webrequest.cc{uri}
 }
