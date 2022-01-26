@@ -9,3 +9,7 @@ binst.tk:80, binst.tk {
         header_up X-Forwarded-Host {host}
     }
 }
+
+www.binst.tk {
+    redir https://binst.tk{uri}
+}
