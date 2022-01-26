@@ -1,5 +1,5 @@
 
-binst.tk {
+binst.tk:80, binst.tk {
     reverse_proxy https://secure.binst.tk {
         header_up Host secure.binst.tk
         header_up X-Real-IP {remote}
