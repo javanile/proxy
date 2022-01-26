@@ -10,6 +10,6 @@ binst.tk:80, binst.tk {
     }
 }
 
-www.binst.tk {
+www.binst.tk:80, www.binst.tk {
     redir https://binst.tk{uri}
 }
