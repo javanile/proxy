@@ -1,7 +1,7 @@
 # IONOS Proxy
 
 ```text
-IP 74.208.245.19
+US Proxy - IP 74.208.245.19
 ```
 
 ## Install
