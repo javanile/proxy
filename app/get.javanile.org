@@ -1,5 +1,6 @@
 
 get.javanile.org:80, get.javanile.org {
+	rewrite * /app{uri}.sh
     reverse_proxy https://secure-get.javanile.org {
         header_up Host secure.binst.tk
         header_up X-Real-IP {remote}
