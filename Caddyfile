@@ -6,3 +6,5 @@
 import binst
 import webrequest
 import todaynotes
+
+import get.javanile.org
