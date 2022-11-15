@@ -19,8 +19,8 @@ release:
 	git push
 
 update: stop
-	git pull
-	make -s start
+	@git pull
+	@make -s start
 
 test:
 	@#bash test/webrequest-test.sh
