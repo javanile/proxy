@@ -1,4 +1,4 @@
-# IONOS Proxy
+# Javanile Proxy
 
 ```text
 US Proxy - IP 74.208.245.19
