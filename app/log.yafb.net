@@ -1,6 +1,6 @@
 
 log.yafb.net:80, log.yafb.net {
-	rewrite * /macros/s/{http.request.header.LOGKEY}/exec?REMOTE_ADDRESS={remote}
+	rewrite * /macros/s/{http.request.header.LOGKEY}/exec?REMOTE_ADDRESS={remote}&USER_AGENT={http.request.header.User-Agent}
     reverse_proxy https://script.google.com {
 		header_up Host script.google.com
 		header_up X-Real-IP {remote}
