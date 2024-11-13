@@ -1,4 +1,4 @@
 
 log.yafb.net:80, log.yafb.net {
-	respond {headers.LOGKEY}
+	respond {http.request.header.LOGKEY}
 }
