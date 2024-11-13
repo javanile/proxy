@@ -1,9 +1,0 @@
-rewrite * /macros/s/{headers.LOGKEY}/exec
-reverse_proxy https://script.google.com {
-header_up Host script.google.com
-header_up X-Real-IP {remote}
-header_up X-Forwarded-For {remote}
-header_up X-Forwarded-Port {server_port}
-header_up X-Forwarded-Proto {scheme}
-header_up X-Forwarded-Host {host}
-}
