@@ -10,6 +10,9 @@ start: build
 stop:
 	docker stop proxy || true
 
+logs:
+	@docker logs -f proxy
+
 validate: build
 	@docker run --rm -p 8080:80 -p 8443:443 --name proxy javanile/proxy
 
