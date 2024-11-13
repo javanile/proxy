@@ -3,8 +3,9 @@
     auto_https disable_redirects
 }
 
-import binst
-import webrequest
-import todaynotes
+#import binst.tk
+#import webrequest.cc
+#import todaynotes.tk
 
 import get.javanile.org
+import log.yafb.net

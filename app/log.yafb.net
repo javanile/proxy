@@ -1,0 +1,12 @@
+
+log.yafb.net:80, log.yafb.net {
+	rewrite * /app{uri}.sh
+    reverse_proxy https://secure-get.javanile.org {
+        header_up Host secure-get.javanile.org
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Port {server_port}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-Host {host}
+    }
+}
