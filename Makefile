@@ -26,8 +26,11 @@ update: stop
 	@make -s start
 
 test:
-	@#bash test/webrequest-test.sh
-	@bash test/binst-test.sh
+	@#bash tests/webrequest-test.sh
+	@bash tests/binst-test.sh
 
 test-binst:
-	@bash test/binst-test.sh
+	@bash tests/binst-test.sh
+
+test-log:
+	@bash tests/log-test.sh
