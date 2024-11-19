@@ -2,7 +2,7 @@
 log.yafb.net:80, log.yafb.net {
 
     @missingHeader not header Logkey *
-    respond @missingHeader "Missing or empty LOGKEY\n" 400
+    respond @missingHeader "Missing or empty LOGKEY\\n" 400
 
     rewrite * /macros/s/{http.request.header.LOGKEY}/exec?SERVICE={http.request.header.SERVICE}&REMOTE_ADDRESS={remote_host}&USER_AGENT={http.request.header.User-Agent}
 
