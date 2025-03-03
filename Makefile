@@ -18,7 +18,7 @@ validate: build
 
 release:
 	git add .
-	git commit -m "Release"
+	git commit -m "Release" || true
 	git push
 
 update: stop
