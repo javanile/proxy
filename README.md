@@ -25,3 +25,9 @@ git clone https://github.com/javanile/proxy.git /opt/proxy
 cd /opt/proxy
 make start
 ```
+
+## Reload
+
+```shell
+ssh root@74.208.245.19 bash -c "cd /opt/proxy && make reload" 
+```
