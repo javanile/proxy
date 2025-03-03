@@ -4,7 +4,7 @@ data.alterloop.dev:80, data.alterloop.dev {
    		respond "API not found"
    }
 
-   handle_path /web/* {
+   handle_path /* {
 		respond "WEB not found"
-  }
+   }
 }
