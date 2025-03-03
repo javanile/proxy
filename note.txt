@@ -11,8 +11,8 @@
 		}
     }
 
-    @root not path /api/*
-    rewrite @root /data.alterloop.dev{uri}
+
+    rewrite /* /data.alterloop.dev{uri}
     reverse_proxy @root https://yafb.net {
         header_up Host yafb.net
     }
