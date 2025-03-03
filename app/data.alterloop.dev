@@ -5,7 +5,7 @@ data.alterloop.dev:80, data.alterloop.dev {
    }
 
    handle_path /* {
-		rewrite / /data.alterloop.dev{uri}
+		rewrite * /data.alterloop.dev{uri}
 		reverse_proxy @root https://yafb.net {
 			header_up Host yafb.net
 		}
