@@ -5,7 +5,7 @@ data.alterloop.dev:80, data.alterloop.dev {
        respond @missingHeader "Missing or empty SECRET" 400
 
    		rewrite /api/* /macros/s/{http.request.header.SECRET}/exec?REMOTE_ADDRESS={remote_host}&USER_AGENT={http.request.header.User-Agent}
-        reverse_proxy * https://script.google.com {
+        reverse_proxy https://script.google.com {
       			header_up Host script.google.com
       			header_up X-Real-IP {remote}
       			header_up X-Forwarded-For {remote}
@@ -17,7 +17,7 @@ data.alterloop.dev:80, data.alterloop.dev {
 
    handle_path /* {
 		rewrite * /data.alterloop.dev{uri}
-		reverse_proxy * https://yafb.net {
+		reverse_proxy https://yafb.net {
 			header_up Host yafb.net
 		}
    }
