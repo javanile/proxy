@@ -6,13 +6,14 @@ data.alterloop.dev:80, data.alterloop.dev {
 
    		  rewrite * /macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
         reverse_proxy https://script.google.com {
-              			header_up Host script.google.com
-              			header_up X-Real-IP {remote}
-              			header_up X-Forwarded-For {remote}
-              			header_up X-Forwarded-Port {server_port}
-              			header_up X-Forwarded-Proto {scheme}
-              			header_up X-Forwarded-Host {host}
-                }
+            header_up Host script.google.com
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_up X-Forwarded-Port {server_port}
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-Host {host}
+            header_up Content-Type application/json
+        }
    }
 
    handle_path /* {
