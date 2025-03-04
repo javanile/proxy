@@ -5,7 +5,7 @@ data.alterloop.dev:80, data.alterloop.dev {
        respond @missingHeader "Missing or empty SECRET" 400
 
    		respond "/api/* /macros/s/{http.request.header.SECRET}/exec?REMOTE_ADDRESS={remote_host}&USER_AGENT={http.request.header.User-Agent}&{query}" 200
-		}
+
    }
 
    handle_path /* {
