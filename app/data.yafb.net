@@ -7,20 +7,7 @@ data.yafb.net:80, data.yafb.net {
 	    @invalidSecret header Secret *{20,}
 		respond @invalidSecret "Invalid SECRET" 400
 
-        header {
-            Access-Control-Allow-Origin *
-            Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-            Access-Control-Allow-Headers "Content-Type, Secret, User-Agent, X-Real-IP, X-Forwarded-For, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-Host"
-            Access-Control-Allow-Credentials true
-        }
 
-        handle_options {
-            respond 204 {
-                header Access-Control-Allow-Origin *
-                header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-                header Access-Control-Allow-Headers "Content-Type, Secret, User-Agent, X-Real-IP, X-Forwarded-For, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-Host"
-            }
-        }
 
 		rewrite * /macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
 		reverse_proxy https://script.google.com {
