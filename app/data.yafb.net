@@ -4,6 +4,9 @@ data.yafb.net:80, data.yafb.net {
 		@missingHeader not header Secret *
 		respond @missingHeader "Missing or empty SECRET" 400
 
+	    @invalidSecret header Secret *{20,}
+		respond @invalidSecret "Invalid SECRET" 400
+
 		rewrite * /macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
 		reverse_proxy https://script.google.com {
 			header_up Host script.google.com
