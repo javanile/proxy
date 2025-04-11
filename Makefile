@@ -2,7 +2,8 @@
 .PHONY: test
 
 build:
-	docker build --no-cache -t javanile/proxy .
+	@chmod +x docker-entrypoint.sh cgi-bin/*.sh
+	@docker build --no-cache -t javanile/proxy .
 
 start: build
 	docker run --rm -d -p 80:80 -p 443:443 -v proxy:/data --name proxy javanile/proxy
@@ -35,3 +36,9 @@ test-binst:
 
 test-log:
 	@bash tests/log-test.sh
+
+test-localhost: build
+	@docker kill proxy-test || true
+	@docker run -d --rm -p 8080:80 -p 8443:443 --name proxy-test javanile/proxy
+	@sleep 1
+	@curl -i -H "Custom-Header: test" -H "Host: localhost" "http://localhost:8080/test?a=1&b=2"

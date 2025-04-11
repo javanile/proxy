@@ -26,6 +26,8 @@
 #import webrequest.cc
 #import todaynotes.tk
 
+import localhost
+
 import get.javanile.org
 import log.yafb.net
 import data.yafb.net

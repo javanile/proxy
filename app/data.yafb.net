@@ -9,8 +9,8 @@ data.yafb.net:80, data.yafb.net {
 	    @invalidSecret header Secret DEPLOYMENT*
 		respond @invalidSecret "Invalid SECRET" 400
 
-		rewrite * /macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
-		reverse_proxy https://script.google.com {
+		rewrite * /curl.sh/macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
+		reverse_proxy http://localhost:8183 {
 			header_up Host script.google.com
 			header_up X-Real-IP {remote}
 			header_up X-Forwarded-For {remote}
