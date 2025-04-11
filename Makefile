@@ -41,4 +41,4 @@ test-localhost: build
 	@docker kill proxy-test || true
 	@docker run -d --rm -p 8080:80 -p 8443:443 --name proxy-test javanile/proxy
 	@sleep 1
-	@curl -i -H "Custom-Header: test" -H "Host: localhost" "http://localhost:8080/test?a=1&b=2"
+	@curl -i -H "Custom-Header: test" -H "Host: localhost" "http://localhost:8080/test?a=1&b=2" -d '{"a":1,"b":2}'

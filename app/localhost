@@ -1,8 +1,6 @@
 
 localhost:80 {
-	respond "Hello World"
-
-	rewrite * /index.sh/{path}?{query}
+	rewrite * /debug.sh/{path}?{query}
     reverse_proxy http://localhost:8183 {
         header_up Host {host}
         header_up X-Real-IP {remote}
