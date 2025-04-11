@@ -35,6 +35,8 @@ header_stop=$(grep -n '^HTTP/' "$headers" | tail -n 1 | cut -d: -f1)
 echo ""
 echo "URL:"
 echo "$url"
+echo "ENV:"
+printenv
 echo "HEADERS:"
 cat "$headers"
 echo "BODY:"
