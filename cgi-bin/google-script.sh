@@ -31,14 +31,15 @@ if [ $exit_code -ne 0 ]; then
   exit $exit_code
 fi
 
-header_stop=$(grep -n '^HTTP/' "$headers" | tail -n 1 | cut -d: -f1)
-
 if [ -z "$debug" ]; then
-  echo ""
-  sed -n "$((header_stop+1)),\$p" "$headers"
-  echo "BODY:"
-  cat "$body"
-  cat "$body"
+  if [ "$REQUEST_METHOD" != "POST" ]; then
+    header_stop=$(grep -n '^HTTP/' "$headers" | tail -n 1 | cut -d: -f1)
+    sed -n "$((header_stop+1)),\$p" "$headers"
+    cat "$body"
+  else
+    echo ""
+    cat "$body"
+  fi
 else
   echo ""
   echo "URL:"
