@@ -17,7 +17,7 @@ logs:
 validate: build
 	@docker run --rm -p 8080:80 -p 8443:443 --name proxy javanile/proxy
 
-release:
+release: build
 	git config credential.helper 'cache --timeout=3600'
 	git add .
 	git commit -m "Release" || true
