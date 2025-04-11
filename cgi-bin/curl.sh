@@ -10,7 +10,7 @@ fi
 
 curl -s -L -D "$headers" -o "$body" \
   -X "${REQUEST_METHOD}" \
-  "http://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}" \
+  "https://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}" \
   ${post_data}
 
 exit_code=$?
