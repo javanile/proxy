@@ -9,7 +9,7 @@ data.yafb.net:80, data.yafb.net {
 	    @invalidSecret header Secret DEPLOYMENT*
 		respond @invalidSecret "Invalid SECRET" 400
 
-		rewrite * /google-script.sh
+		rewrite * /google-script.sh/{path}?{query}
 		reverse_proxy http://localhost:8183 {
 			header_up Host {host}
 			header_up X-Real-IP {remote}
