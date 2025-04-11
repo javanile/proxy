@@ -3,7 +3,7 @@
 headers=$(mktemp)
 body=$(mktemp)
 
-echo curl -L -s -D "$headers" -o "$body" \
+curl -L -s -D "$headers" -o "$body" \
   -X "${REQUEST_METHOD}" \
   "https://${HTTP_HOST}${PATH_INFO}?${QUERY_STRING}"
 
