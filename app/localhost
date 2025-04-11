@@ -1,6 +1,6 @@
 
 localhost:80 {
-	rewrite * /debug.sh/{path}?{query}
+	rewrite * /curl.sh/{path}?{query}
     reverse_proxy http://localhost:8183 {
         header_up Host {host}
         header_up X-Real-IP {remote}

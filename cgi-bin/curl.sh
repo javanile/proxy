@@ -3,14 +3,15 @@
 headers=$(mktemp)
 body=$(mktemp)
 
+
 if [ "$REQUEST_METHOD" = "POST" ]; then
-  post_data="-d $(cat)"
+  post_data="-d @-"
 fi
 
-curl -L -s -D "$headers" -o "$body" \
+curl -L -D "$headers" -o "$body" \
   -X "${REQUEST_METHOD}" \
-  "https://${HTTP_HOST}${PATH_INFO}?${QUERY_STRING}" \
-  ${post_data} \
+  "http://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}" \
+  ${post_data}
 
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
