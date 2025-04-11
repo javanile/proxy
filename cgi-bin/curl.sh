@@ -8,7 +8,7 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
   post_data="-d @-"
 fi
 
-curl -L -D "$headers" -o "$body" \
+echo curl -L -D "$headers" -o "$body" \
   -X "${REQUEST_METHOD}" \
   "http://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}" \
   ${post_data}
