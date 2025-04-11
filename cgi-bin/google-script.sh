@@ -43,6 +43,7 @@ else
   echo "ENV:"
   printenv
   echo "HEADERS:"
+  echo "STOP: $header_stop"
   cat "$headers"
   echo "BODY:"
   cat "$body"
