@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-debug=1
+debug=
 headers=$(mktemp)
 body=$(mktemp)
 remote_host=$(echo "$REMOTE_ADDR" | cut -d: -f1)
