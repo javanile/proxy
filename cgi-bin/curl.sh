@@ -2,7 +2,7 @@
 
 headers=$(mktemp)
 body=$(mktemp)
-url="https://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}"
+url="https://${HTTP_HOST}${PATH_INFO}?${QUERY_STRING}"
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   post_data="-d @-"
