@@ -2,7 +2,7 @@
 
 headers=$(mktemp)
 body=$(mktemp)
-
+url="https://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}"
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   post_data="-d @-"
@@ -10,7 +10,7 @@ fi
 
 curl -s -L -D "$headers" -o "$body" \
   -X "${REQUEST_METHOD}" \
-  "https://${HTTP_HOST}:${HTTP_PORT}${PATH_INFO}?${QUERY_STRING}" \
+  "${url}" \
   ${post_data}
 
 exit_code=$?
@@ -23,6 +23,8 @@ fi
 header_stop=$(grep -n '^HTTP/' "$headers" | tail -n 1 | cut -d: -f1)
 
 echo ""
+echo "URL:"
+echo "$url"
 echo "HEADERS:"
 cat "$headers"
 echo "BODY:"
