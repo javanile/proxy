@@ -1,27 +1,27 @@
 #!/usr/bin/env sh
 
-deployment_id=
-
-# /macros/s/{http.request.header.SECRET}/exec?$REMOTE_ADDRESS={remote_host}&$USER_AGENT={http.request.header.User-Agent}&$REQUEST_URI={path}&{query}
 headers=$(mktemp)
 body=$(mktemp)
+remote_host=$(echo "$REMOTE_ADDR" | cut -d: -f1)
+user_agent=$(echo "$HTTP_USER_AGENT" | cut -d' ' -f1)
+deployment_id=${HTTP_SECRET}
+query=$QUERY_STRING
+path=$PATH_INFO
+url="https://script.google.com/macros/s/${deployment_id}/exec?REMOTE_ADDRESS=${remote_host}&USER_AGENT=${user_agent}&REQUEST_URI=${path}&${query}"
 
-url="https://${HTTP_HOST}${PATH_INFO}?${QUERY_STRING}"
-
-# curl -L 'https://script.google.com/macros/s/AKfycby5gk18nlsrcXE4myjqzWmO6HxG_RrRU1iUb12xlJufDgkDt5TdDrKidXqCPCKxhbT70w/exec' -H 'Host: script.google.com' -H 'User-Agent: SOMETHING' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Language: en,en-US;q=0.5' --compressed -H 'Referer: SOMETHING' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' --data '{"a":1}'
 
 if [ "$REQUEST_METHOD" != "POST" ]; then
   curl -s -L -D "$headers" -o "$body" \
-    -X "${REQUEST_METHOD}" \
-    "${url}" \
-    ${post_data}
+    -X GET \
+    "${url}"
 else
-  curl -s -L -D "$headers" -o "$body" \
-    -X "${REQUEST_METHOD}" \
-    "${url}" \
-    ${post_data}
+  curl -L "${url}" -D "$headers" -o "$body" \
+    -H 'Host: script.google.com' -H 'User-Agent: SOMETHING' \
+    -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+    -H 'Accept-Language: en,en-US;q=0.5' --compressed \
+    -H 'Referer: SOMETHING' -H 'DNT: 1' -H 'Connection: keep-alive' \
+    -H 'Upgrade-Insecure-Requests: 1' --data @-
 fi
-
 
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
