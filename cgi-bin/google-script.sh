@@ -37,6 +37,7 @@ if [ -z "$debug" ]; then
     sed -n "$((header_stop+1)),\$p" "$headers"
     cat "$body"
   else
+    echo "Content-Type: application/json"
     echo ""
     cat "$body"
   fi
