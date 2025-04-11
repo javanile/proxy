@@ -36,6 +36,8 @@ header_stop=$(grep -n '^HTTP/' "$headers" | tail -n 1 | cut -d: -f1)
 if [ -z "$debug" ]; then
   sed -n "$((header_stop+1)),\$p" "$headers"
   echo ""
+  echo "BODY:"
+  cat "$body"
   cat "$body"
 else
   echo ""
