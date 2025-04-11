@@ -7,7 +7,7 @@ user_agent=$(echo "$HTTP_USER_AGENT" | cut -d' ' -f1)
 deployment_id=${HTTP_SECRET}
 query=$QUERY_STRING
 path=$PATH_INFO
-url="https://script.google.com/macros/s/${deployment_id}/exec?REMOTE_ADDRESS=${remote_host}&USER_AGENT=${user_agent}&REQUEST_URI=${path}&${query}"
+url="https://script.google.com/macros/s/${deployment_id}/exec?\$REMOTE_ADDRESS=${remote_host}&\$USER_AGENT=${user_agent}&\$REQUEST_URI=${path}&${query}"
 
 
 if [ "$REQUEST_METHOD" != "POST" ]; then
