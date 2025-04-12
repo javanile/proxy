@@ -1,6 +1,5 @@
 
 data.alterloop.dev:80, data.alterloop.dev {
-   redir https://data.yafb.net/
 
    handle_path /api/* {
        @missingHeader not header Secret *
