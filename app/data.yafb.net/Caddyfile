@@ -13,7 +13,7 @@ data.yafb.net:80, data.yafb.net {
 		respond @invalidSecret <<JSON
     {"error":"The provided 'SECRET' header is invalid or unauthorized"}
 
-		>> 400
+		JSON 400
 
 		rewrite * /google-script.sh/{path}?{query}
 		reverse_proxy http://localhost:8183 {
