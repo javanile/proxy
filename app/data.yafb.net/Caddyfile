@@ -4,7 +4,10 @@ data.yafb.net:80, data.yafb.net {
 		import cors {header.origin}
 
 		@missingHeader not header Secret *
-		respond @missingHeader "Missing or empty SECRET" 400
+		respond @missingHeader <<JSON
+		Missing or empty SECRET
+
+		JSON 400
 
 	    @invalidSecret header Secret DEPLOYMENT*
 		respond @invalidSecret "Invalid SECRET" 400

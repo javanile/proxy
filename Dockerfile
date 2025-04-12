@@ -1,4 +1,4 @@
-FROM caddy:2.4.6-alpine
+FROM caddy:2.9.1-alpine
 
 RUN apk add --update lighttpd curl && rm -rf /var/cache/apk/*
 
