@@ -22,12 +22,12 @@
 	}
 }
 
-#import binst.tk
-#import webrequest.cc
-#import todaynotes.tk
+#import binst.tk/Caddyfile
+#import webrequest.cc/Caddyfile
+#import todaynotes.tk/Caddyfile
 
-import localhost
+import localhost/Caddyfile
 
-import get.javanile.org
-import log.yafb.net
-import data.yafb.net
+import get.javanile.org/Caddyfile
+import log.yafb.net/Caddyfile
+import data.yafb.net/Caddyfile
