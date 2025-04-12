@@ -5,12 +5,15 @@ data.yafb.net:80, data.yafb.net {
 
 		@missingHeader not header Secret *
 		respond @missingHeader <<JSON
-		Missing or empty SECRET
+    {"error":"The 'SECRET' header is required but was not provided or is empty"}
 
 		JSON 400
 
-	    @invalidSecret header Secret DEPLOYMENT*
-		respond @invalidSecret "Invalid SECRET" 400
+	  @invalidSecret header Secret DEPLOYMENT*
+		respond @invalidSecret <<JSON
+    {"error":"The provided 'SECRET' header is invalid or unauthorized"}
+
+		>> 400
 
 		rewrite * /google-script.sh/{path}?{query}
 		reverse_proxy http://localhost:8183 {
